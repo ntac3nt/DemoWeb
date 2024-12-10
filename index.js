@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-mongoose.connect("mongodb://localhost:27017/products");
+mongoose.connect(process.env.Url_Db);
 const router = require("./routes/client/index.router");
 const pug = require("pug");
 const app = express();
