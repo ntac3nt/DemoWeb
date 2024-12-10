@@ -1,0 +1,71 @@
+/* Tổng quan */
+.content {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+
+/* Định dạng cho tiêu đề */
+h1 {
+  font-size: 3em;
+  color: #282a36;
+  margin: 0 20px; /* Khoảng cách giữa chữ và ảnh */
+  text-align: center;
+  animation: glitter 1.5s infinite alternate;
+}
+
+/* Tạo hiệu ứng lấp lánh cho chữ */
+@keyframes glitter {
+  0% {
+    text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4,
+      0 0 20px #ff1493, 0 0 25px #ff1493, 0 0 30px #ff1493;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 15px #ff4500,
+      0 0 20px #ff6347, 0 0 25px #ff6347, 0 0 30px #ff6347;
+  }
+}
+
+/* Định dạng cho hình ảnh mèo */
+.cat-left,
+.cat-right {
+  width: 60px; /* Giảm kích thước hình ảnh mèo */
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Đặt các con mèo ở 2 bên của chữ */
+.cat-left {
+  margin-right: 20px; /* Khoảng cách giữa mèo và chữ */
+}
+
+.cat-right {
+  margin-left: 20px; /* Khoảng cách giữa mèo và chữ */
+}
+
+/* Hiệu ứng khi hover vào hình ảnh mèo */
+.cat-left:hover,
+.cat-right:hover {
+  transform: scale(1.2); /* Phóng to hình ảnh khi hover */
+  filter: brightness(1.2) contrast(1.2); /* Làm sáng và tăng độ tương phản khi hover */
+}
+
+/* Hiệu ứng di chuyển nhẹ của mèo */
+@keyframes moveCat {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.cat-left,
+.cat-right {
+  animation: moveCat 3s infinite ease-in-out;
+}
