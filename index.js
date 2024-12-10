@@ -1,7 +1,11 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
 require("dotenv").config();
-mongoose.connect(process.env.Url_Db);
+
+const database = require("./config/database.js");
+
+database.connect();
+
 const router = require("./routes/client/index.router");
 const pug = require("pug");
 const app = express();
