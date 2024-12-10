@@ -1,0 +1,9 @@
+extends ../../../layouts/default.pug
+include ../../../mixins/tieude.pug
+
+block main
+   +tieu-de("Đây là trang Sản Phẩm", "Đây là đoạn mô tả")
+
+   ul
+      each item in product
+         li #{item.title} - Giá cả : #{item.price}
