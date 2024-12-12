@@ -4,7 +4,12 @@ module.exports.products = async (req, res) => {
     status: "active",
     delected: false,
   });
-  // console.log(sanpham);
+  sanpham.forEach((item) => {
+    item.pricenew = (
+      (item.price * (100 - item.discountPercentage)) /
+      100
+    ).toFixed(0);
+  });
   res.render("client/page/products/products.pug", {
     titlepage: "Trang Sản Phẩm",
     sanpham: sanpham,
