@@ -7,12 +7,13 @@ block main
          .col-12
             +box-head("Danh Sách Sản Phẩm")
       .row
-         .col-4.mb-3
-            .product-item
-               .inner-image
-                  img(src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png", alt="..")
-               .inner-content
-                  h3.inner-title Thổi bong bóng
-                  .inner-price 4$
-                  .inner-price-old 6$
-                  .inner-discount -20%
+         each item in sanpham
+            .col-4.mb-3
+               .product-item
+                  .inner-image
+                     img(src=item.thumbnail, alt=item.title)
+                  .inner-content
+                     h3.inner-title #{item.title}
+                     .inner-price 100$
+                     .inner-price-old #{item.price}
+                     .inner-discount -20%
