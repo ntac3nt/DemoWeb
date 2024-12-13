@@ -1,3 +1,5 @@
+// [GET] /sanpham
+
 const SanPham = require("../../models/sanpham");
 module.exports.products = async (req, res) => {
   const sanpham = await SanPham.find({
