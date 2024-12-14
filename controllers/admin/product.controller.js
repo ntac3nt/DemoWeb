@@ -40,10 +40,17 @@ module.exports = async (req, res) => {
     find.status = req.query.status;
   }
 
+  let keyword = "";
+  if (req.query.keyword) {
+    keyword = req.query.keyword;
+    find.title = keyword;
+  }
+
   const sanphamadmin = await products.find(find);
   res.render("admin/pages/products/index.pug", {
     title: "Trang San Pham",
     sanphamadmin: sanphamadmin,
     button: button,
+    keyword: keyword,
   });
 };
