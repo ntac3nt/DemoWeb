@@ -1,7 +1,13 @@
 extends ../../layouts/default.pug
 
 block main
-    h1 Day la trang san pham
+    h1 Đây là trang sản phẩm
+
+    .card.mb-3 
+        .card.header Bộ lọc và tìm kiếm 
+        .card-body
+            each item in button
+                button(class=`btn btn-sm ml-1 btn-outline-success ${item.class}` button-status=item.status) #{item.name}
 
     table.table.table-hover.table-sm
         thead
