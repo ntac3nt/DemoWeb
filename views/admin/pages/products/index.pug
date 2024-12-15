@@ -38,4 +38,14 @@ block main
                     td 
                         button(class="btn btn-warning btn-sm") Sửa
                         button(class="btn btn-danger btn-sm ml-1") Xóa
-    
+    nav
+        ul(class="pagination")
+            if(pagi.currentpage > 1)
+                li(class="page-item")
+                    button(class="page-link" current=pagi.currentpage-1) Trang trước
+            - for(var i = 1;i<=pagi.totalpage; ++i)
+                li(class=`page-item ${i==pagi.currentpage ? "active" : ""}`)
+                    button(class="page-link" current=i) #{i}
+            if(pagi.currentpage < pagi.totalpage)
+                li(class="page-item")
+                    button(class="page-link" current = pagi.currentpage+1) Kế tiếp

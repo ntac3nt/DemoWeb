@@ -29,6 +29,20 @@ if (formseach) {
     }
     window.location.href = url;
   });
-} else {
-  //
+}
+
+// pagination
+
+const pagination = document.querySelectorAll("[current]");
+
+if (pagination) {
+  pagination.forEach((item) => {
+    item.addEventListener("click", () => {
+      const page = item.getAttribute("current");
+      const url = new URL(window.location.href);
+
+      url.searchParams.set("page", page);
+      window.location.href = url;
+    });
+  });
 }
