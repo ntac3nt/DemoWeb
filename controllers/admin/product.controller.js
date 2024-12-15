@@ -1,52 +1,20 @@
 // [GET] /admin/sanpham
 
 const products = require("../../models/sanpham");
-
+const filtstatushelper = require("../../helpers/filtstatus");
+const search = require("../../helpers/search.helper");
+const searchHelper = require("../../helpers/search.helper");
 module.exports = async (req, res) => {
-  const button = [
-    {
-      name: "Tất cả",
-      status: "",
-      class: "",
-    },
-    {
-      name: "Hoạt động",
-      status: "active",
-      class: "",
-    },
-    {
-      name: "Dừng hoạt động",
-      status: "inactive",
-      class: "",
-    },
-  ];
-
-  if (req.query.status) {
-    const index = button.findIndex((item) => {
-      return item.status == req.query.status;
-    });
-    button[index].class = "active";
-  } else {
-    const index = button.findIndex((item) => {
-      return item.status == "";
-    });
-    button[index].class = "active";
-  }
-
+  //filt status
+  const button = filtstatushelper(req.query);
   let find = {
     delected: "false",
   };
   if (req.query.status) {
     find.status = req.query.status;
   }
-
-  let keyword = "";
-  if (req.query.keyword) {
-    keyword = req.query.keyword;
-    const regex = new RegExp(keyword, "i");
-    find.title = regex;
-  }
-
+  // search
+  const keyword = searchHelper(req.query, find);
   const sanphamadmin = await products.find(find);
   res.render("admin/pages/products/index.pug", {
     title: "Trang San Pham",
