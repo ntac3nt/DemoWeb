@@ -1,4 +1,4 @@
-// [GET] /admin/sanpham
+// [GET] /adminnta/sanpham
 
 const products = require("../../models/sanpham");
 const filtstatushelper = require("../../helpers/filtstatus");
@@ -6,7 +6,7 @@ const search = require("../../helpers/search.helper");
 const searchHelper = require("../../helpers/search.helper");
 const Product = require("../../models/sanpham");
 const pagination = require("../../helpers/page.helper");
-module.exports = async (req, res) => {
+module.exports.index = async (req, res) => {
   //filt status
   const button = filtstatushelper(req.query);
   let find = {
@@ -42,4 +42,12 @@ module.exports = async (req, res) => {
     keyword: keyword,
     pagi: pagi,
   });
+};
+// [GET] /adminnta/sanpham/change-status/status/id
+
+module.exports.changestatus = async (req, res) => {
+  const status = req.params.status;
+  const id = req.params.id;
+  await Product.updateOne({ _id: id }, { status: status });
+  res.redirect("back");
 };

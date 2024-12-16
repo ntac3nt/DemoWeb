@@ -29,12 +29,12 @@ block main
                     td
                         img(src=item.thumbnail, alt=item.title width="100px" height="auto")
                     td #{item.title}
-                    td #{item.price}
+                    td #{item.price}$
                     td 
                         if(item.status == "active")
-                            a(href="#" class="badge badge-success")  Hoạt động
+                            a(href="javascript:;" button-change-status data-status=item.status data-id=item.id class="badge badge-success")  Hoạt động
                         else 
-                            a(href="#" class="badge badge-danger")  Dừng hoạt động
+                            a(href="javascript:;" button-change-status data-status=item.status data-id=item.id class="badge badge-danger")  Dừng hoạt động
                     td 
                         button(class="btn btn-warning btn-sm") Sửa
                         button(class="btn btn-danger btn-sm ml-1") Xóa
@@ -49,3 +49,11 @@ block main
             if(pagi.currentpage < pagi.totalpage)
                 li(class="page-item")
                     button(class="page-link" current = pagi.currentpage+1) Kế tiếp
+    form(
+        action="", 
+        method="POST",
+        id="form-change-status",
+        data-path=`${pathadmin}/sanpham/change-status`
+    ) 
+
+    script(src="/admin/js/product.js") 
