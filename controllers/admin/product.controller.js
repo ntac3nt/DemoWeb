@@ -43,7 +43,7 @@ module.exports.index = async (req, res) => {
     pagi: pagi,
   });
 };
-// [GET] /adminnta/sanpham/change-status/status/id
+// [patch] /adminnta/sanpham/change-status/status/id
 
 module.exports.changestatus = async (req, res) => {
   const status = req.params.status;
