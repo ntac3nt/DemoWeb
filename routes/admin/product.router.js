@@ -13,3 +13,5 @@ productrouter.patch(
 
 productrouter.patch("/change-multi", ControllerRouter.change_multi);
 module.exports = productrouter;
+
+productrouter.delete("/delete/:id", ControllerRouter.delete_item);

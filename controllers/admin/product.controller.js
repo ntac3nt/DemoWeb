@@ -67,3 +67,11 @@ module.exports.change_multi = async (req, res) => {
   }
   res.redirect("back");
 };
+
+// [delete] /adminnta/sanpham/delete/id
+module.exports.delete_item = async (req, res) => {
+  const id = req.params.id;
+  await Product.updateOne({ _id: id }, { delected: true });
+
+  res.redirect("back");
+};
