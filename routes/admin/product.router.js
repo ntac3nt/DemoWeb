@@ -10,4 +10,6 @@ productrouter.patch(
   "/change-status/:status/:id",
   ControllerRouter.changestatus
 );
+
+productrouter.patch("/change-multi", ControllerRouter.change_multi);
 module.exports = productrouter;

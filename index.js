@@ -5,6 +5,8 @@ require("dotenv").config();
 var methodOverride = require("method-override");
 const database = require("./config/database.js");
 
+var bodyParser = require("body-parser");
+
 database.connect();
 
 const routerClient = require("./routes/client/index.router");
@@ -18,6 +20,8 @@ const app = express();
 const port = process.env.Port;
 
 app.use(methodOverride("_method"));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.locals.pathadmin = path_amin.PathAdmin;
 
