@@ -11,6 +11,7 @@ const Spschema = new mongoose.Schema({
   thumbnail: String,
   status: String,
   delected: Boolean,
+  delectedAt: Date,
 });
 
 const Product = mongoose.model("Product", Spschema, "Sanpham");

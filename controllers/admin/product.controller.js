@@ -62,6 +62,11 @@ module.exports.change_multi = async (req, res) => {
     case "inactive":
       await Product.updateMany({ _id: { $in: id } }, { status: "inactive" });
       break;
+    case "delete-all":
+      await Product.updateMany(
+        { _id: { $in: id } },
+        { delected: "true", delectedAt: new Date() }
+      );
     default:
       break;
   }
@@ -71,7 +76,10 @@ module.exports.change_multi = async (req, res) => {
 // [delete] /adminnta/sanpham/delete/id
 module.exports.delete_item = async (req, res) => {
   const id = req.params.id;
-  await Product.updateOne({ _id: id }, { delected: true });
+  await Product.updateOne(
+    { _id: id },
+    { delected: true, delectedAt: new Date() }
+  );
 
   res.redirect("back");
 };

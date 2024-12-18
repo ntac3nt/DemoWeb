@@ -90,6 +90,15 @@ if (changemulti) {
     const inputchecked = checkbox_multi.querySelectorAll(
       "input[name='id']:checked"
     );
+
+    const typechange = e.target.elements.type.value;
+
+    if (typechange == "delete-all") {
+      let isconfirm = confirm("Bạn có chắc muốn xóa không");
+      if (!isconfirm) {
+        return;
+      }
+    }
     const input_ids = changemulti.querySelector("input[name='ids']");
     if (inputchecked.length > 0) {
       let ids = [];
