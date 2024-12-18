@@ -140,3 +140,19 @@ if (button_delete.length > 0) {
     });
   });
 }
+
+// show alert
+
+const showalert = document.querySelector("[show-alert]");
+if (showalert) {
+  const time = parseInt(showalert.getAttribute("data-time"));
+
+  const close_alert = showalert.querySelector("[close-alert]");
+  setTimeout(() => {
+    showalert.classList.add("alert-hidden");
+  }, time);
+
+  close_alert.addEventListener("click", () => {
+    showalert.classList.add("alert-hidden");
+  });
+}

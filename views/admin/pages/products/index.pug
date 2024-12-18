@@ -2,8 +2,10 @@ extends ../../layouts/default.pug
 include ../../../mixins/filtstatus.pug
 include ../../../mixins/search.pug
 include ../../../mixins/formchangemulti.pug
+include ../../../mixins/alert.pug
 block main
-    h1 Đây là trang sản phẩm
+    h1 Đây là trang sản phẩm 
+    +alert-success(5000)
 
     .card.mb-3 
         .card-header Bộ lọc và tìm kiếm 

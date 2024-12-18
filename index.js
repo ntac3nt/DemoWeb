@@ -2,6 +2,12 @@ const express = require("express");
 
 require("dotenv").config();
 
+var flash = require("express-flash");
+
+var cookieParser = require("cookie-parser");
+
+var session = require("express-session");
+
 var methodOverride = require("method-override");
 const database = require("./config/database.js");
 
@@ -27,6 +33,10 @@ app.locals.pathadmin = path_amin.PathAdmin;
 
 app.set("views", "./views");
 app.set("view engine", "pug");
+
+app.use(cookieParser("fafjdaf"));
+app.use(session({ cookie: { maxAge: 60000 } }));
+app.use(flash());
 
 app.use(express.static("public"));
 routerClient(app);
