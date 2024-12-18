@@ -104,7 +104,15 @@ if (changemulti) {
       let ids = [];
       inputchecked.forEach((item) => {
         let id = item.getAttribute("value");
-        ids.push(id);
+
+        if (typechange == "change-position") {
+          const position = item
+            .closest("tr")
+            .querySelector("input[name='position']").value;
+          ids.push(`${id}-${position}`);
+        } else {
+          ids.push(id);
+        }
       });
       input_ids.setAttribute("value", ids);
       changemulti.submit();

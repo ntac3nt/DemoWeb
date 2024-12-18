@@ -32,6 +32,7 @@ module.exports.index = async (req, res) => {
 
   const sanphamadmin = await products
     .find(find)
+    .sort({ position: "desc" })
     .limit(pagi.limitproduct)
     .skip(pagi.startposition);
 
@@ -67,6 +68,12 @@ module.exports.change_multi = async (req, res) => {
         { _id: { $in: id } },
         { delected: "true", delectedAt: new Date() }
       );
+    case "change-position":
+      for (const item of id) {
+        let [id, pos] = item.split("-");
+        pos = parseInt(pos);
+        await Product.updateOne({ _id: id }, { position: pos });
+      }
     default:
       break;
   }

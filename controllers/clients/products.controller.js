@@ -5,7 +5,7 @@ module.exports.products = async (req, res) => {
   const sanpham = await SanPham.find({
     status: "active",
     delected: false,
-  });
+  }).sort({ position: "desc" });
   sanpham.forEach((item) => {
     item.pricenew = (
       (item.price * (100 - item.discountPercentage)) /

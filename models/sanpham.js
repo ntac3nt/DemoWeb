@@ -10,6 +10,7 @@ const Spschema = new mongoose.Schema({
   images: Array,
   thumbnail: String,
   status: String,
+  position: Number,
   delected: Boolean,
   delectedAt: Date,
 });
