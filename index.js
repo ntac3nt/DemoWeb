@@ -1,5 +1,4 @@
 const express = require("express");
-
 require("dotenv").config();
 
 var flash = require("express-flash");

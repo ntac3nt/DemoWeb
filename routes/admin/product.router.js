@@ -1,5 +1,7 @@
 const express = require("express");
-
+const multer = require("multer");
+const storage = require("../../helpers/MulterStorage");
+const upload = multer({ storage: storage() });
 const productrouter = express.Router();
 
 const ControllerRouter = require("../../controllers/admin/product.controller");
@@ -19,4 +21,8 @@ productrouter.delete("/delete/:id", ControllerRouter.delete_item);
 productrouter.get("/creat", ControllerRouter.creat);
 
 // [post] admin/sanpham/creat
-productrouter.post("/creat", ControllerRouter.creatpost);
+productrouter.post(
+  "/creat",
+  upload.single("thumbnail"),
+  ControllerRouter.creatpost
+);

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+var slug = require("mongoose-slug-updater");
+mongoose.plugin(slug);
 
 const Spschema = new mongoose.Schema(
   {
@@ -11,6 +13,11 @@ const Spschema = new mongoose.Schema(
     status: String,
     position: Number,
     stock: Number,
+    slug: {
+      type: String,
+      slug: "title",
+      unique: true,
+    },
     delected: {
       type: Boolean,
       default: false,
