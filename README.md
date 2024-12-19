@@ -13,6 +13,8 @@ git clone https://github.com/ntac3nt/DemoWeb
 
 ## Usage
 
+Please contact me to get the .env file
+
 Move to the folder you just cloned to
 Install dependencies
 
