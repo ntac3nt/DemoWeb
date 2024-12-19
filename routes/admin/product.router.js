@@ -15,3 +15,8 @@ productrouter.patch("/change-multi", ControllerRouter.change_multi);
 module.exports = productrouter;
 
 productrouter.delete("/delete/:id", ControllerRouter.delete_item);
+// [get] admin/sanpham/creat
+productrouter.get("/creat", ControllerRouter.creat);
+
+// [post] admin/sanpham/creat
+productrouter.post("/creat", ControllerRouter.creatpost);

@@ -1,5 +1,5 @@
 // [GET] /adminnta/sanpham
-
+const config = require("../../config/system");
 const products = require("../../models/sanpham");
 const filtstatushelper = require("../../helpers/filtstatus");
 const search = require("../../helpers/search.helper");
@@ -105,4 +105,28 @@ module.exports.delete_item = async (req, res) => {
   req.flash("success", "Cập nhật trạng thái thành công!!!");
 
   res.redirect("back");
+};
+
+// [get] /admin/sanpham/creat
+module.exports.creat = (req, res) => {
+  res.render("admin/pages/products/creat.pug", {
+    title: "Trang San Pham",
+  });
+};
+
+// [post] /admin/sanpham/creat
+module.exports.creatpost = async (req, res) => {
+  req.body.price = parseInt(req.body.price);
+  req.body.discountPercentage = parseInt(req.body.discountPercentage);
+  req.body.stock = parseInt(req.body.stock);
+  if (req.body.position == "") {
+    const pos = await Product.countDocuments();
+    req.body.position = pos + 1;
+  } else {
+    req.body.position = parseInt(req.body.position);
+  }
+  const sanphamnew = new Product(req.body);
+  await sanphamnew.save();
+
+  res.redirect(`${config.PathAdmin}/sanpham`);
 };
