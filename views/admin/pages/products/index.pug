@@ -6,7 +6,7 @@ include ../../../mixins/alert.pug
 block main
     h1 Đây là trang sản phẩm 
     +alert-success(5000)
-
+    +alert-error(5000)
     .card.mb-3 
         .card-header Bộ lọc và tìm kiếm 
         .card-body
@@ -65,7 +65,8 @@ block main
                                     else 
                                         a(href="javascript:;" button-change-status data-status=item.status data-id=item.id class="badge badge-danger")  Dừng hoạt động
                                 td 
-                                    button(
+                                    a(
+                                        href=`${pathadmin}/sanpham/edit/${item.id}`
                                         class="btn btn-warning btn-sm"
                                         ) Sửa
                                     button(

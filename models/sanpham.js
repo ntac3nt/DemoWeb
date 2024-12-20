@@ -13,6 +13,7 @@ const Spschema = new mongoose.Schema(
     status: String,
     position: Number,
     stock: Number,
+    description: String,
     slug: {
       type: String,
       slug: "title",

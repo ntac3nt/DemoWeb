@@ -28,3 +28,15 @@ productrouter.post(
   validate.createPost,
   ControllerRouter.creatpost
 );
+
+// [get] pathadmin/sanpham/edit/id
+
+productrouter.get("/edit/:id", ControllerRouter.edit);
+
+// [patch] admin/sanpham/edit/id
+productrouter.patch(
+  "/edit/:id",
+  upload.single("thumbnail"),
+  validate.createPost,
+  ControllerRouter.editpost
+);

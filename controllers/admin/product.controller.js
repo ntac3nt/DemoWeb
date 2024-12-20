@@ -133,3 +133,41 @@ module.exports.creatpost = async (req, res) => {
 
   res.redirect(`${config.PathAdmin}/sanpham`);
 };
+
+module.exports.edit = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    let find = {
+      delected: "false",
+      _id: id,
+    };
+    const sanpham = await Product.findOne(find);
+    res.render("admin/pages/products/edit", {
+      title: "Trang chỉnh sửa",
+      sanpham: sanpham,
+    });
+  } catch (error) {
+    req.flash("error", "Không tìm thấy sản phẩm");
+    res.redirect(`${config.PathAdmin}/sanpham`);
+  }
+};
+
+// [post] /admin/sanpham/creat
+module.exports.editpost = async (req, res) => {
+  const id = req.params.id;
+  req.body.price = parseInt(req.body.price);
+  req.body.discountPercentage = parseInt(req.body.discountPercentage);
+  req.body.stock = parseInt(req.body.stock);
+  req.body.position = parseInt(req.body.position);
+  if (req.file) {
+    req.body.thumbnail = `/images/${req.file.filename}`;
+  }
+  try {
+    await Product.updateOne({ _id: id }, req.body);
+    req.flash("success", "Cập nhật thành công");
+  } catch (error) {
+    req.flash("error", "Vui lòng kiểm tra lại thông tin");
+  }
+  res.redirect("back");
+};
