@@ -125,8 +125,9 @@ module.exports.creatpost = async (req, res) => {
   } else {
     req.body.position = parseInt(req.body.position);
   }
-
-  req.body.thumbnail = `/images/${req.file.filename}`;
+  if (req.file) {
+    req.body.thumbnail = `/images/${req.file.filename}`;
+  }
   const sanphamnew = new Product(req.body);
   await sanphamnew.save();
 

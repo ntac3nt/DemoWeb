@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const storage = require("../../helpers/MulterStorage");
 const upload = multer({ storage: storage() });
+const validate = require("../../validates/admin/product.validate");
 const productrouter = express.Router();
 
 const ControllerRouter = require("../../controllers/admin/product.controller");
@@ -24,5 +25,6 @@ productrouter.get("/creat", ControllerRouter.creat);
 productrouter.post(
   "/creat",
   upload.single("thumbnail"),
+  validate.createPost,
   ControllerRouter.creatpost
 );
